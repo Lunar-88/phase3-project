@@ -4,6 +4,7 @@ import sys
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from models import Property, Client, Transaction
+from sqlalchemy.exc import IntegrityError
 
 # Setup DB connection
 engine = create_engine("sqlite:///real_estate.db")
@@ -42,6 +43,7 @@ def list_clients():
 
 
 def add_client():
+    session = Session()
     name = input("Enter client name: ")
     email = input("Enter client email: ")
     phone = input("Enter client phone: ")
@@ -49,8 +51,14 @@ def add_client():
 
     new_client = Client(name=name, email=email, phone=phone, role=role)
     session.add(new_client)
-    session.commit()
-    print("✅ Client added successfully!")
+    try:
+        session.commit()
+        print("✅ Client added successfully!")
+    except IntegrityError:
+        session.rollback()
+        print("⚠️ A client with this email or phone already exists. Please use different details.")
+    finally:
+        session.close()
 
 
 def record_transaction():

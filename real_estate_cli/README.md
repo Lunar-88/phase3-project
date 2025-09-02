@@ -1,7 +1,9 @@
 
+VIDEO LINK : https://drive.google.com/file/d/1NC1t-vJOGV8EWvqFqRVqePep60-dwnjm/view?usp=drive_link
+
 # Real Estate CLI
 
-A Python CLI project for managing **properties, clients, and transactions** using SQLAlchemy ORM and Click.
+A Python CLI project for managing **properties, clients, and transactions** using SQLAlchemy ORM.
 
 ## Features
 - Manage properties (add, list).
@@ -21,4 +23,8 @@ A Python CLI project for managing **properties, clients, and transactions** usin
 pipenv install
 pipenv shell
 alembic init alembic
-python seed.py
+python seed.py 
+
+
+
+VIDEO LINK: https://drive.google.com/file/d/1NC1t-vJOGV8EWvqFqRVqePep60-dwnjm/view?usp=drive_link
